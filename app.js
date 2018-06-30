@@ -1,53 +1,65 @@
-// TODO
+// // 1) create simple component
+// var App = () => <div>Bonjour</div>;
+// ReactDOM.render(<App />, document.getElementById("app"));
 
-// level 1 - just a sample
-var App = () => (
-  <div>Some cliche salutation</div>
-);
 
-ReactDOM.render(<App />, document.getElementById("app"));
 
-// level 2 - add complexity
-var GroceryList = () => (
-  <ul>
-    <li>Tea</li>
-    <li>Milk</li>
-  </ul>
-);
+// // // 2a) create single component nodes
+// var Cucumber = () => <li>Cucumber</li>;
+// var Kale = () => <li>Kale</li>;
 
-ReactDOM.render(<GroceryList />, document.getElementById("app"));
+// // // 2b) create tree for component additions
+// var App = () => (
+//   <div>
+//     <h2>My Grocery List</h2>
+//     <Cucumber />
+//     <Kale />
+//   </div>
+// );
 
-// level 3 - nest components
-// base level - items
-var Kale = () => (
-  <li>Kale</li>
-)
+// ReactDOM.render(<App />, document.getElementById("app"));
 
-var Cucumber = () => (
-  <li>Cucumber</li>
-)
 
-// 2nd level - unordered list
-var ToDoList = () => (
-  <ul>
-    <Cucumber />
-    <Kale />
-  </ul>
-)
 
-// 3rd level - App
+// 3 creating props (passing properties into components)
+// var GroceryList = (props) => (
+//   <ul>
+//     <li>{props.items[0]}</li>
+//     <li>{props.items[1]}</li>
+//     <li>{props.items[2]}</li>
+//   </ul>
+// );
+
+// var App = () => (
+//   <div>
+//     <h2>My Grocery List</h2>
+//     <GroceryList items={['Cucumber', 'Kale', 'Tomato']} />
+//   </div>
+// );
+
+// ReactDOM.render(<App />, document.getElementById("app"));
+
+
+
+
+
+// // // 3b Dynamically generating props (passing properties into components)
 var App = () => (
   <div>
-    <h2>My Todo List</h2>
-    <ToDoList />
+    <h2>My Grocery List</h2>
+    <GroceryList items={['Cucumber', 'Kale', 'Tomatoes']} />
   </div>
 );
 
+var GroceryList = (props) => (
+  <ul>
+    {props.items.map(item =>
+       <li>{item}</li>
+    )}
+  </ul>
+);
+
 ReactDOM.render(<App />, document.getElementById("app"));
 
 
-// var GroceryList = () => (
-//   <ul>Grocery List
-//     <li></li>
-//   </ul>
-// );
+
